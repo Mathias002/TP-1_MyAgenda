@@ -27,7 +27,7 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
-            $this->addFlash('success',"L'annonce à bien été ajoutée");
+            $this->addFlash('successAdd',"Le contact à bien été ajoutée");
 
             // Faites tout ce que vous devez faire après l'ajout
 
@@ -54,6 +54,8 @@ class ContactController extends AbstractController
         $entityManager->remove($contact);
         $entityManager->flush();
 
+        $this->addFlash('successRemove',"Le contact à bien été supprimé");
+
         return $this->redirectToRoute('app_all_contact');
     }
 
@@ -76,6 +78,8 @@ class ContactController extends AbstractController
             $entityManager->flush();
 
             // Faites tout ce que vous devez faire après l'ajout
+
+            $this->addFlash('successUpdate',"Le contact à bien été modifié");
 
             return $this->redirectToRoute('app_all_contact', ['id_contact' => $contact]);
         }

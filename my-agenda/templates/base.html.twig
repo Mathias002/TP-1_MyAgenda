@@ -26,6 +26,24 @@
     %}
   </head>
 
+  <style>
+    .table{
+      width: 80%;
+      margin: auto;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .login{
+      width: 60%;
+      margin: 5rem auto;
+    }
+    .btn{
+      margin-top: 2rem;
+    }
+</style>
+
   <header>
     {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,23 +68,10 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{{ path('app_all_contact')}}"
                 >Home</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">users</a>
-            </li>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href=""
-                    >All Products</a
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-              </ul>
             </li>
           </ul>
           <form class="d-flex">
@@ -75,23 +80,17 @@
               type="submit"
               style="margin-right: 3rem"
             >
-              <a class="dropdown-item" href="">
-                add annonce
+              <a class="dropdown-item" href="{{ path('app_add_contact')}}">
+                add Contact
               </a>
             </button>
             {# Vérifier si l'utilisateur est connecté #} 
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %} {# L'utilisateur est connecté, afficher le bouton "Log out" #}
             <button class="btn btn-outline-dark" type="submit">
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item" href="{{ path('app_logout')}}">
                 Log out
               </a>
             </button>
-              <a class="dropdown-item" href="" style="margin: auto 1rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                </svg>
-              </a>
             {% else %} {# L'utilisateur n'est pas connecté, afficher le bouton
             "Log in" ou "Register" #}
             <button
@@ -99,12 +98,12 @@
               style="margin-right: 1rem"
               type="submit"
             >
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item" href="{{ path('app_register')}}">
                 Register
               </a>
             </button>
             <button class="btn btn-outline-dark" type="submit">
-              <a class="dropdown-item" href="">Log in</a>
+              <a class="dropdown-item" href="{{ path('app_login')}}">Log in</a>
             </button>
             {% endif %}
           </form>
@@ -115,10 +114,7 @@
     <header class="bg-dark py-5 mb-5">
       <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-          <h1 class="display-4 fw-bolder">Shop in style</h1>
-          <p class="lead fw-normal text-white-50 mb-0">
-            With this shop hompeage template
-          </p>
+          <h1 class="display-4 fw-bolder">Contact List</h1>
         </div>
       </div>
     </header>
