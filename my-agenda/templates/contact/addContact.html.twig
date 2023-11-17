@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %} {% block title %}Add contact{% endblock %} 
+{%block body %}
+    <div id="container_form" style="width:40%; margin:auto;">
+
+        <h1>Add Contact</h1>
+
+        {{ form_start(NewContactForm) }}
+
+        {{ form_row(NewContactForm.nom) }}
+
+        {{ form_row(NewContactForm.prenom) }}
+
+        {{ form_row(NewContactForm.email) }}
+
+        {{ form_row(NewContactForm.telephone) }}
+
+
+        <button class="btn btn-dark" type="submit">Add to Contact</button>
+
+        {{ form_end(NewContactForm) }}
+        
+    </div>
+{% endblock %}
+

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block body %}
+<a class="dropdown-item" href="{{ path('app_add_contact')}}">
+    add annonce
+</a>
+<table class="table">
+    <thead>
+        <th>
+            Nom
+        </th>
+        <th>
+            Prénom
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Téléphone
+        </th>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+            <tr class="table-active">
+                <td>
+                    <a href="{{ path('contact_detail', {'id_contact': contact.id}) }}">{{ contact.nom }}</a>
+                </td>
+                <td>
+                    <a href="{{ path('contact_detail', {'id_contact': contact.id}) }}">{{ contact.prenom }}</a>
+                </td>
+                <td>
+                    <a href="{{ path('contact_detail', {'id_contact': contact.id}) }}">{{ contact.email }}</a>
+                </td>
+                <td>
+                    <a href="{{ path('contact_detail', {'id_contact': contact.id}) }}">{{ contact.telephone }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    
+{% endblock %}
