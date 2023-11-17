@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 17 nov. 2023 à 21:15
+-- Généré le : ven. 17 nov. 2023 à 21:27
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -18,32 +18,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `mabase`
+-- Base de données : `myagendadb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `annonce`
+-- Structure de la table `contact`
 --
 
-DROP TABLE IF EXISTS `annonce`;
-CREATE TABLE IF NOT EXISTS `annonce` (
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE IF NOT EXISTS `contact` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prix` int NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `creation_date` date NOT NULL,
-  `update_date` date NOT NULL,
+  `prenom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `annonce`
+-- Déchargement des données de la table `contact`
 --
 
-INSERT INTO `annonce` (`id`, `nom`, `prix`, `description`, `creation_date`, `update_date`) VALUES
-(1, 'test', 50, 'testtest', '2023-11-17', '2023-11-17');
+INSERT INTO `contact` (`id`, `nom`, `prenom`, `email`, `telephone`) VALUES
+(3, 'Johnson', 'Bob', 'bob.johnson@email.com', '555-123-4567'),
+(4, 'poi', 'poi', 'poi@poi.fr', '123456'),
+(6, 'Manceau', 'Arthur', 'armanceau@efrei.net', '123456');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,8 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20231117123848', '2023-11-17 12:39:01', 134);
+('DoctrineMigrations\\Version20231117133808', '2023-11-17 13:38:17', 108),
+('DoctrineMigrations\\Version20231117144411', '2023-11-17 14:44:21', 181);
 
 -- --------------------------------------------------------
 
@@ -101,15 +103,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
-(1, 'test.test@test', '[]', '$2y$13$MBhcbjBZjRHSNZzEkLZ4suXsEwC5YK7C.BSdyBRV.z0jWLU7Yp2xS'),
-(2, 'poipoi@poi.poi', '[]', '$2y$13$DkznPsX.s4hsqi3lOoTtNeRzZpgKdvpT/vg3i5HdBZOO34ICMlVzW');
+(2, 'poi@poi.poi', '[\"ROLE_ADMIN\"]', '$2y$13$rE73n.NU9KrmnP8mN3.ku.6PfVY1cZjZ9CSNG97obKQfzKja1Skp2'),
+(3, 'test@test.test', '[\"ROLE_ADMIN\"]', '$2y$13$Ih9SL8GAy0.e6BV1GqA4Y.FkkODOuNH9w67e2lljiooeNSa4aBBsq');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
